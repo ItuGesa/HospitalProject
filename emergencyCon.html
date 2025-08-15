@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Confirmation</title>
+    <link rel="stylesheet" href="emergencyCon.css">
+</head>
+<body>
+    <img src="images/symbol.jpg" alt="Medical Logo" class="top-right-logo">
+    <div class="confirmation-container">
+        <h2>🚨 Emergency Case Confirmation</h2>
+        <p><strong>Name:</strong> <span id="cName"></span></p>
+        <p><strong>Surname:</strong> <span id="cSurname"></span></p>
+        <p><strong>ID Number:</strong> <span id="cIdNumber"></span></p>
+        <p><strong>Age:</strong> <span id="cAge"></span></p>
+        <p><strong>Gender:</strong> <span id="cGender"></span></p>
+        <p><strong>Issue:</strong> <span id="cIssue"></span></p>
+        <hr>
+        <p style="color: red; font-weight: bold;">This is an EMERGENCY. Please proceed to the Emergency
+           Ward immediately upon arrival.</p>
+        <p>Please bring your South African ID and any relevant medical documents.</p>
+    </div>
+
+    <script>
+        const data = JSON.parse(localStorage.getItem('emergencyData'));
+        if (data) {
+            document.getElementById('cName').textContent = data.name || '';
+            document.getElementById('cSurname').textContent = data.surname || '';
+            document.getElementById('cIdNumber').textContent = data.idNumber || '';
+            document.getElementById('cAge').textContent = data.age || '';
+            document.getElementById('cGender').textContent = data.gender || '';
+            document.getElementById('cIssue').textContent = data.description || '';
+            
+
+        }
+        const fileInput = document.getElementById('image');
+        if (fileInput.files && fileInput.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                data.imageData = e.target.result; // Base64 string
+                localStorage.setItem('emergencyData', JSON.stringify(data));
+                window.location.href = "emergencyCon.html";
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        } else {
+            localStorage.setItem('emergencyData', JSON.stringify(data));
+            window.location.href = "emergencyCon.html";
+        }
+    
+    </script>
+</body>
+</html>

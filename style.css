@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: rgb(18, 6, 88);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.top-right-logo {
+    position: absolute; 
+    top: 20px; 
+    right: 20px;
+    width: 80px; 
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid red;
+    height: auto;
+}
+h2 {
+    color:rgb(117, 112, 138);
+    display:block;
+    margin-top: 10px;
+    font-weight: 15px;
+}
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+form, #months, #days, #times {
+    margin-top: 20px;
+}
+input, select, textarea, button {
+    width: 80%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+textarea {
+    resize: vertical;
+}
+.gender-options {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.gender-options label {
+    font-weight: normal;
+}
+h1 {
+    display: flex;
+    margin-top: 100px;
+    margin-left:550px;
+    width:200px;
+    height: 100px;
+    color: white; 
+}
+.registrar button {
+    display:flex;
+    margin-left:570px;
+    border-radius:2px;
+}
+
+button hover {
+    background-color: rgb(132, 216, 5);
+}
+
+#months, #days, #times {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    max-width: 360px;
+    margin: 5px auto;
+}
+#months button, #days button, #times button {
+    display: flex;               
+    justify-content: center;     
+    align-items: center;         
+    width: 100%;                 
+    aspect-ratio: 1 / 1;         
+    font-size: 16px;
+    cursor: pointer;
+}

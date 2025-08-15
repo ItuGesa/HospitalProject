@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    </head>
+    
+        <body>
+            <div id="confirmation"></div>
+            <button onclick="window.print()">Print / Save as PDF</button>
+        
+            <script>
+            const patientData = JSON.parse(localStorage.getItem('patientData')) || {};
+            const month = localStorage.getItem('month');
+            const date = localStorage.getItem('day');
+            const time = localStorage.getItem('time');
+        
+            document.getElementById('confirmation').innerHTML = `
+                <h2>Appointment Confirmation</h2>
+                <p><strong>Full Name:</strong> ${patientData.fullName || ''}</p>
+                <p><strong>Surname:</strong> ${patientData.surname || ''}</p>
+                <p><strong>Month:</strong> ${month}</p>
+                <p><strong>Date:</strong> ${date}</p>
+                <p><strong>Time:</strong> ${time}</p>
+                <p><strong>Reason for Visit:</strong>Checkup</p>
+                <p><strong>Ward:</strong> General Outpatient</p>
+                <p>Please bring your Identity Book and Clinic/Hospital Card.</p>
+            `;
+            </script>
+    </body>
+</html>

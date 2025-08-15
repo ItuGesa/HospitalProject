@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <title>Select Month</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h2>Select Month</h2>
+        <div id="months"></div>       
+        <script src="script.js"></script>
+        <script>
+            function loadMonths() {
+                const months = [
+                    "January" , "February" , "March" , "April" , "May" , "June" ,
+                    "July" , "August" , "September" , "October" , "November" , "December"
+                ];
+                const container = document.getElementById('months');
+                months.forEach(month => {
+                const btn = document.createElement('button');
+                btn.textContent = month;
+                btn.onclick = function() {
+                    // store month under the SAME name used later
+                    localStorage.setItem("month", month);
+                    window.location.href = "Day.html";
+                };
+                    container.appendChild(btn);
+                });
+            }
+            loadMonths();
+        </script>
+    </body>
+</html>

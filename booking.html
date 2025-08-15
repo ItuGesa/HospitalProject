@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Check Booking Availability</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; max-width: 450px; margin: auto; }
+  button { margin-top: 15px; padding: 12px 20px; font-size: 16px; cursor: pointer; }
+  #message { margin-top: 25px; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h2>Confirm Your Appointment</h2>
+<p id="details"></p>
+<button id="confirmBtn">Confirm Booking</button>
+<p id="message"></p>
+
+<script>
+  // Retrieve chosen details from localStorage
+  const month = localStorage.getItem("month");
+  const day = localStorage.getItem("day");
+  const time = localStorage.getItem("time");
+
+  const detailsElem = document.getElementById("details");
+  const confirmBtn = document.getElementById("confirmBtn");
+  const message = document.getElementById("message");
+
+  if (!month || !day || !time) {
+    detailsElem.textContent = "Appointment details missing. Please start over.";
+    confirmBtn.style.display = "none";
+  } else {
+    detailsElem.textContent = `You are booking for ${day} ${month} at ${time}.`;
+  }
+
+  confirmBtn.addEventListener("click", () => {
+    if (!month || !day || !time) return;
+
+    
+    const bookingKey = `booking_${month}_${day}`;
+
+    
+    let bookings = JSON.parse(localStorage.getItem(bookingKey)) || [];
+
+    
+    if (bookings.length >= 15) {
+      message.style.color = "red";
+      message.textContent = "Sorry, this day is fully booked (15 bookings reached).";
+      return;
+    }
+
+    
+    if (bookings.includes(time)) {
+      message.style.color = "red";
+      message.textContent = "Sorry, this time slot is already booked. Please select another time.";
+      return;
+    }
+
+   
+    bookings.push({time});
+    localStorage.setItem(bookingKey, JSON.stringify(bookings));
+
+    message.style.color = "green";
+    message.textContent = `Booking confirmed! ${day} ${month} at ${time}`;
+
+    
+    setTimeout(() => {
+      window.location.href = "confirmation.html";
+    }, 2000);
+  });
+</script>
+
+</body>
+</html>

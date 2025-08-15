@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <title>Patient Information Form</title>
+        <link rel="stylesheet" href="patient.css">
+    </head>
+    <body>
+        <img src="images/symbol.jpg" alt="Medical Logo" class="top-right-logo">
+        <div class="form-container">
+        <h2>Personal Information</h2>
+        <form id="patientForm" action="AppointmentForm.html" method="get">
+            <label>Full Name:</label>
+            <input type="text" id="fullName" placeholder="Enter your full name" required>
+
+            <label>Surname:</label>
+            <input type="text" id="surname" placeholder="Enter your surname" required>
+
+            <label>Date of Birth:</label>
+            <input type="date" id="dob" required>
+
+            <label for="idNumber">South African ID Number</label>
+            <input type="text" id="idNumber" name="idNumber" pattern="^\d{13}$" title="ID number must be exactly 13 digits" placeholder="e.g. 9501015800081" required>
+    
+
+            <label>Nationality:</label>
+            <select id="nationality" required>
+                <option value="">--Select--</option>
+                <option>African</option>
+                <option>White</option>
+                <option>Indian</option>
+                <option>Colored</option>
+            </select>
+
+            <label>Gender:</label>
+            <div class="gender-option">
+            Female<input type="radio" name="gender" value="Female" required>
+            Male<input type="radio" name="gender" value="Male" required>
+            </div>
+
+            <label>Home Address & Postal Code:</label>
+            <textarea id="address"></textarea>
+
+            <label>Cell Number:</label>
+            <input type="cel" id="celNumber">
+
+            <label>Work Number:</label>
+            <input type="tel" id="workNumber">
+
+            <label>Email:</label>
+            <input type="email" id="email" required>
+
+
+            <label>Current Medical Conditions:</label>
+            <select id="currentConditions" name="conditions[]" multiple>
+                <option>Alzheimer's Disease</option>
+                <option>Asthma</option>
+                <option>Athritis</option>
+                <option>Cancer</option>
+                <option>Diabetes</option>
+                <option>Epilepsy</option>
+                <option>HIV & Aids</option>
+                <option>Hypertension</option>
+                <option>Kidney Disease</option>
+                <option>Obesity</option>
+                <option>Tuberculosis</option>
+                
+            </select>
+
+            <label>Allergies:</label>
+            <select id="allergies" multiple>
+                <option>Medication</option>
+                <option>Food</option>
+                <option>Environmental</option>
+            </select>
+
+            <label>Important Medical Details:</label>
+            <textarea id="surgeries"></textarea>
+
+            <label>Chronic Conditions:</label>
+            <select id="chronicConditions" name="conditions[]" multiple>
+                <option>Alzheimer's Disease</option>
+                <option>Asthma</option>
+                <option>Athritis</option>
+                <option>Cancer</option>
+                <option>Diabetes</option>
+                <option>Epilepsy</option>
+                <option>HIV & Aids</option>
+                <option>Hypertension</option>
+                <option>Kidney Disease</option>
+                <option>Obesity</option>
+                <option>Tuberculosis</option>
+            </select>
+
+            <label>Family Medical History:</label>
+            <select id="familyHistory" name="conditions[]" multiple>
+                <option>Alzheimer's Disease</option>
+                <option>Asthma</option>
+                <option>Athritis</option>
+                <option>Cancer</option>
+                <option>Diabetes</option>
+                <option>Epilepsy</option>
+                <option>HIV & Aids</option>
+                <option>Hypertension</option>
+                <option>Kidney Disease</option>
+                <option>Obesity</option>
+                <option>Tuberculosis</option>
+            </select>
+
+            <button type="submit" class="patientBtn">SUBMIT</button>
+        </form>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
